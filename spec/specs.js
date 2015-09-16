@@ -43,10 +43,34 @@ describe('Game', function(){
         expect(testGame.player2.mark).to.equal("O");
     });
 
-    it("knows which player's turn it is", function() {
+    it("have a turn and change that turn", function() {
         var testGame = new Game();
         expect(testGame.currentTurn).to.equal("X");
         testGame.nextTurn();
         expect(testGame.currentTurn).to.equal("O");
+    });
+
+    it("sets game.gameOver to true if there is a winning combination", function () {
+      var testGame = new Game();
+      testGame.board.spaces.space1.markedBy = "X";
+      testGame.board.spaces.space2.markedBy = "X";
+      testGame.board.spaces.space3.markedBy = "X";
+      testGame.checkWin();
+      expect(testGame.gameOver).to.equal(true);
+    });
+
+    it("sets game.gameOver to true if there is a tie combination", function () {
+      var testGame = new Game();
+      testGame.board.spaces.space1.markedBy = "O";
+      testGame.board.spaces.space2.markedBy = "X";
+      testGame.board.spaces.space3.markedBy = "X";
+      testGame.board.spaces.space4.markedBy = "X";
+      testGame.board.spaces.space5.markedBy = "X";
+      testGame.board.spaces.space6.markedBy = "O";
+      testGame.board.spaces.space7.markedBy = "O";
+      testGame.board.spaces.space8.markedBy = "O";
+      testGame.board.spaces.space9.markedBy = "X";
+      testGame.checkWin();
+      expect(testGame.gameOver).to.equal(true);
     });
 });
