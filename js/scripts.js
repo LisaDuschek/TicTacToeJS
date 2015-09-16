@@ -37,34 +37,39 @@ function Game(){
 Game.prototype.nextTurn = function(){
   if (this.currentTurn = "X"){
     return this.currentTurn = "O";
-  };
-  if (this.currentTurn = "O"){
+    debugger;
+  } else {
     return this.currentTurn = "X";
+    debugger;
   };
 };
 
 Game.prototype.checkWin = function() {
-  if ((this.board.spaces.space1.markedBy === this.board.spaces.space2.markedBy && this.board.spaces.space1.markedBy === this.board.spaces.space3.markedBy) ||
-  (this.board.spaces.space4.markedBy === this.board.spaces.space5.markedBy && this.board.spaces.space4.markedBy === this.board.spaces.space6.markedBy) ||
-  (this.board.spaces.space7.markedBy === this.board.spaces.space8.markedBy && this.board.spaces.space7.markedBy === this.board.spaces.space9.markedBy) ||
-  (this.board.spaces.space1.markedBy === this.board.spaces.space4.markedBy && this.board.spaces.space1.markedBy === this.board.spaces.space7.markedBy) ||
-  (this.board.spaces.space2.markedBy === this.board.spaces.space5.markedBy && this.board.spaces.space2.markedBy === this.board.spaces.space8.markedBy) ||
-  (this.board.spaces.space3.markedBy === this.board.spaces.space6.markedBy && this.board.spaces.space3.markedBy === this.board.spaces.space9.markedBy) ||
-  (this.board.spaces.space1.markedBy === this.board.spaces.space5.markedBy && this.board.spaces.space1.markedBy === this.board.spaces.space9.markedBy) ||
-  (this.board.spaces.space3.markedBy === this.board.spaces.space5.markedBy && this.board.spaces.space3.markedBy === this.board.spaces.space7.markedBy)) {
+  var space1 = this.board.spaces.space1.markedBy
+  var space2 = this.board.spaces.space2.markedBy
+  var space3 = this.board.spaces.space3.markedBy
+  var space4 = this.board.spaces.space4.markedBy
+  var space5 = this.board.spaces.space5.markedBy
+  var space6 = this.board.spaces.space6.markedBy
+  var space7 = this.board.spaces.space7.markedBy
+  var space8 = this.board.spaces.space8.markedBy
+  var space9 = this.board.spaces.space9.markedBy
+
+  if ((space1 !== "empty" && space2 !== "empty" && space3 !== "empty" && space1 === space2 && space1 === space3) ||
+  (space4 !== "empty" && space5 !== "empty" && space6 !== "empty" && space4 === space5 && space4 === space6) ||
+  (space7 !== "empty" && space8 !== "empty" && space9 !== "empty" && space7 === space8 && space7 === space9) ||
+  (space1 !== "empty" && space4 !== "empty" && space7 !== "empty" && space1 === space4 && space1 === space7) ||
+  (space2 !== "empty" && space5 !== "empty" && space8 !== "empty" && space2 === space5 && space2 === space8) ||
+  (space3 !== "empty" && space6 !== "empty" && space9 !== "empty" && space3 === space6 && space3 === space9) ||
+  (space1 !== "empty" && space5 !== "empty" && space9 !== "empty" && space1 === space5 && space1 === space9) ||
+  (space3 !== "empty" && space5 !== "empty" && space7 !== "empty" && space3 === space5 && space3 === space7)) {
+
     if (confirm("Game over! Player " + this.currentTurn + " wins! Play a new game?")) {
       window.location.reload(); // while testing be sure to click cancel on this prompt. If you click ok it will refresh the page and prompt you again.
     } else {
       return this.gameOver = true; // for testing purposes only.
     };
-  } else if (this.checkTie) { //need to finish checkTie
-    if (confirm("Game ends in a tie! Play a new game?")) {
-      window.location.reload(); // while testing be sure to click cancel on this prompt. If you click ok it will refresh the page and prompt you again.
-    } else {
-      return this.gameOver = true; // for testing purposes only.
-    };
-  } else {
-    this.nextTurn();
+
   };
 };
 
@@ -74,7 +79,8 @@ Game.prototype.checkWin = function() {
 
 Game.prototype.checkTie = function(){
   var winSpaces = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
-
+  var game = this
+  debugger;
   return winSpaces.every(function(combo){
     empties = 0;
     xs = 0;
@@ -96,11 +102,77 @@ Game.prototype.checkTie = function(){
       };
     };
 
-    if (empties === 1 && xs === 1 ||
-        os === 2 && xs === 1 ||
-        os === 1 && xs ===2) {
-      return true;
-    };
+    return empties === 1 && xs === 1 || os === 2 && xs === 1 || os === 1 && xs === 2;
+
+    });
+  };
+
+
+  $(document).ready(function() {
+    var currentGame = new Game;
+
+    $("#1").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+      debugger;
+    });
+
+    $("#2").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+    });
+
+    $("#3").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+    });
+
+    $("#4").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+    });
+
+    $("#5").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+    });
+
+    $("#6").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+    });
+
+    $("#7").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+    });
+
+    $("#8").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+    });
+
+    $("#9").click(function() {
+      $(this).text(currentGame.currentTurn);
+      currentGame.checkTie();
+      currentGame.checkWin();
+      currentGame.nextTurn();
+    });
 
   });
-};
