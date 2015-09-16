@@ -4,3 +4,10 @@ describe('Player', function() {
       expect(testPlayer.mark).to.equal("X");
    });
 });
+
+describe('Space', function() {
+    it("returns the player's mark", function() {
+      var testSpace = new Space(1,2);
+      expect(testSpace.x_coordinate).to.equal(1);
+   });
+});
