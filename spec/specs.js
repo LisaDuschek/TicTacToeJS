@@ -43,4 +43,10 @@ describe('Game', function(){
         expect(testGame.player2.mark).to.equal("O");
     });
 
+    it("knows which player's turn it is", function() {
+        var testGame = new Game();
+        expect(testGame.currentTurn).to.equal("X");
+        testGame.nextTurn();
+        expect(testGame.currentTurn).to.equal("O");
+    });
 });

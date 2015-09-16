@@ -29,4 +29,15 @@ function Game(){
     this.board = new Board;
     this.player1 = new Player("X");
     this.player2 = new Player("O");
+    this.currentTurn = "X";
+};
+
+Game.prototype.nextTurn = function(){
+   if (this.currentTurn = "X"){
+       return this.currentTurn = "O";
+   };
+   if (this.currentTurn = "O"){
+       return this.currentTurn = "X";
+   };
+
 };
