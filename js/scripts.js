@@ -70,6 +70,8 @@ Game.prototype.checkWin = function() {
 
 
 // behold this majestic code
+// but also see majestic code above
+
 Game.prototype.checkTie = function(){
   var winSpaces = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 
@@ -95,8 +97,8 @@ Game.prototype.checkTie = function(){
     };
 
     if (empties === 1 && xs === 1 ||
-    os === 2 && xs === 1 ||
-    os === 1 && xs ===2) {
+        os === 2 && xs === 1 ||
+        os === 1 && xs ===2) {
       return true;
     };
 
